@@ -1,0 +1,13 @@
+.visualize-search-title {
+    margin: 0;
+    color: #303030;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.visualize-search-field {
+    width: 24rem;
+    margin-top: 1rem;
+}

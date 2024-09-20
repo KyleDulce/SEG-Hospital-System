@@ -1,0 +1,63 @@
+.prescribe-wrapper {
+    padding: 2rem;
+}
+
+.prescribe-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+}
+
+.prescribe-title {
+    color: #303030;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+.prescribe-content {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+}
+
+.prescribe-content-col {
+    flex: 1 0 auto;
+}
+
+.prescribe-content-col > * {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.prescribe-field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.prescribe-actions {
+    justify-content: right;
+    display: flex;
+    margin-right: 3rem;
+}
+
+.prescribe-actions > * {
+    margin-left: 1.5rem;
+}
+
+.prescribe-prescribe-button {
+    background-color: #2255A2;
+    color: #FFFFFF;
+}
+
+.prescribe-cancel-button {
+    background-color: #A1A1A1;
+    color: #FFFFFF;
+}

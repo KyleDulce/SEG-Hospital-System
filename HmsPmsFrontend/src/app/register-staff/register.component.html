@@ -1,0 +1,129 @@
+<div class="register-wrapper">
+  <div class="register-container">
+    <div class="register-title">
+      <h1>HMS</h1>
+      <h2>Staff Registration</h2>
+    </div>
+
+    <form [formGroup]="registerForm" >
+      <div class="form-section">
+        <h2>Personal Information</h2>
+        <div class="register-form-fields">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Address</h2>
+        <div class="register-form-fields">
+          <mat-form-field>
+            <mat-label>Street Number</mat-label>
+            <input matInput formControlName="streetNumber" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Unit</mat-label>
+            <input matInput formControlName="unit" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Street Name</mat-label>
+            <input matInput formControlName="streetName" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Zip Code</mat-label>
+            <input matInput formControlName="zipCode" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Province</mat-label>
+            <input matInput formControlName="province" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Country</mat-label>
+            <input matInput formControlName="country" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Account Information</h2>
+        <div class="register-form-fields">
+          <mat-form-field>
+            <mat-label>Staff ID:</mat-label>
+            <input matInput formControlName="staffId" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" />
+          </mat-form-field>
+
+
+          <mat-slide-toggle formControlName="modPerm" (change)="onToggleChange($event)">Mod Perm</mat-slide-toggle>
+
+          <mat-form-field>
+            <mat-label>Retype Password</mat-label>
+            <input matInput formControlName="retypedPass" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Telephone Extension</mat-label>
+            <input matInput formControlName="teleExt" />
+          </mat-form-field>
+
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="staffType"  multiple="false" (change)="staffTypeChosen()">
+            <mat-button-toggle value="generalStaff">General Staff</mat-button-toggle>
+            <mat-button-toggle value="nurse">Nurse</mat-button-toggle>
+            <mat-button-toggle value="doctor">Doctor</mat-button-toggle>
+          </mat-button-toggle-group>
+
+          <div *ngIf="registerForm.get('staffType')?.value === 'nurse'">
+            <mat-form-field>
+              <input matInput placeholder="Bipper Extension" formControlName="bipperExtension">
+            </mat-form-field>
+          </div>
+          <div *ngIf="registerForm.get('staffType')?.value === 'doctor'">
+            <mat-form-field>
+              <input matInput placeholder="Division Name" formControlName="divName">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <a routerLink="/login" class="register-form-create" [routerLink]="['/login']">Cancel</a>
+      <button  mat-raised-button color="primary" (click)="onSubmit()">Register</button>
+    </form>
+  </div>
+</div>

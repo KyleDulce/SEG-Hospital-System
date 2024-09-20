@@ -1,0 +1,29 @@
+<div class="discharge-wrapper">
+    <div class="discharge-header">
+        <h1>Discharge Patient</h1>
+        <div>Admission Record ID: <strong>{{data.recordId}}</strong></div>
+        <div>Patient ID: <strong>{{data.patientId}}</strong></div>
+    </div>
+    <div class="discharge-content">
+        <div>
+            <div>Local Doctor ID: <strong>{{data.localDoctorId}}</strong></div>
+            <div>Division ID: <strong>{{data.divisionId}}</strong></div>
+            <div>Private Insurance Number: <strong>{{data.privateInsuranceNumber}}</strong></div>
+            <div>Discharge Date: <strong>{{formattedDate}}</strong></div>
+        </div>
+        <div>
+            <div>Room Number: <strong>{{data.roomNum}}</strong></div>
+            <div>Bed Number: <strong>{{data.bedNum}}</strong></div>
+        </div>
+    </div>
+    <div class="discharge-reason">
+        <mat-form-field subscriptSizing="dynamic">
+            <mat-label>Private Insurance Number</mat-label>
+            <input type="text" matInput [ngModel]="reason"/>
+        </mat-form-field>
+    </div>
+    <div class="discharge-actions">
+        <button mat-flat-button class="discharge-cancel-button" (click)="cancel()">Cancel</button>
+        <button mat-flat-button class="discharge-confirm-button" (click)="confirm()">Discharge</button>
+    </div>
+</div>

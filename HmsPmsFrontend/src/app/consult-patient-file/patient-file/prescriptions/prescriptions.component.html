@@ -1,0 +1,49 @@
+<div *ngIf="prescriptions" class="prescription-section">
+  <div class="prescription-title">
+    <span>Prescriptions</span>
+    <span class="prescription-buttons-right">
+      <button mat-flat-button *ngIf="staffType === 'Doctor'" (click)="prescribe()">Prescribe</button>
+    </span>
+  </div>
+  <table mat-table [dataSource]="prescriptions" class="mat-elevation-z8">
+    <ng-container matColumnDef="identifier">
+      <th mat-header-cell *matHeaderCellDef>Med ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.identifier }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="unitByDay">
+      <th mat-header-cell *matHeaderCellDef>Units per Day</th>
+      <td mat-cell *matCellDef="let element">{{ element.unitByDay }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="adminByDay">
+      <th mat-header-cell *matHeaderCellDef>Admins per Day</th>
+      <td mat-cell *matCellDef="let element">{{ element.adminByDay }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="methodOfAdministration">
+      <th mat-header-cell *matHeaderCellDef>Admin Method</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.methodOfAdministration }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.endDate }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

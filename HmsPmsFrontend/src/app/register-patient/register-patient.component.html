@@ -1,0 +1,203 @@
+<div class="register-patient-container">
+    <div class="register-patient-header">
+        <h1>Register Patient</h1>
+    </div>
+
+    <div class="register-patient-card-wrapper">
+        <form class="register-patient-card" [formGroup]="registerPatientForm">
+            <div class="register-patient-title">
+                <h1>Register Patient</h1>
+            </div>
+
+            <div class="register-patient-content">
+                <div class="form-column">
+                    <!-- Patient info -->
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic"> 
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="firstName"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lastName"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Marital Status</mat-label>
+                            <input matInput formControlName="maritalStatus"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Gender</mat-label>
+                            <input matInput formControlName="gender"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Telephone</mat-label>
+                            <input matInput formControlName="telephone"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Ext. Doctor ID</mat-label>
+                            <input matInput formControlName="extDoctorID"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Gov Insurance Number</mat-label>
+                            <input matInput formControlName="govInsurNum"/>
+                        </mat-form-field>
+                    </div>
+                    
+
+                    <!-- Patient address -->
+
+                    <div class="form-row">
+                        <h2>Address</h2>
+                    </div>
+
+                    
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Street Number</mat-label>
+                            <input matInput formControlName="streetNumber"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Unit</mat-label>
+                            <input matInput formControlName="unit"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>ZIP</mat-label>
+                            <input matInput formControlName="zipCode"/>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Street Name</mat-label>
+                            <input matInput formControlName="streetName"/>
+                        </mat-form-field>
+                        
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="city"/>
+                        </mat-form-field>
+                    </div>
+                        
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Province</mat-label>
+                            <input matInput formControlName="province"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Country</mat-label>
+                            <input matInput formControlName="country"/>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-divider vertical="true"></mat-divider>
+
+                <div class="form-column">
+                    <div class="form-row">
+                        <h2>Next of Kin</h2>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>First Name</mat-label>
+                            <input matInput formControlName="nokFirstName"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="nokLastName"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Telephone</mat-label>
+                            <input matInput formControlName="nokTelephone"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Relationship to Patient</mat-label>
+                            <input matInput formControlName="nokRelationshipToPatient"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <h2>Next of Kin's Address</h2>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Street Number</mat-label>
+                            <input matInput formControlName="nokStreetNumber"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Unit</mat-label>
+                            <input matInput formControlName="nokUnit"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>ZIP</mat-label>
+                            <input matInput formControlName="nokZipCode"/>
+                        </mat-form-field>
+                    </div>
+                    
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Street Name</mat-label>
+                            <input matInput formControlName="nokStreetName"/>
+                        </mat-form-field>
+                        
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>City</mat-label>
+                            <input matInput formControlName="nokCity"/>
+                        </mat-form-field>
+                    </div>
+                        
+                    <div class="form-row">
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Province</mat-label>
+                            <input matInput formControlName="nokProvince"/>
+                        </mat-form-field>
+
+                        <mat-form-field subscriptSizing="dynamic">
+                            <mat-label>Country</mat-label>
+                            <input matInput formControlName="nokCountry"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-row row-button">
+                        <button mat-raised-button color="primary" (click)="onSubmit()">Register</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

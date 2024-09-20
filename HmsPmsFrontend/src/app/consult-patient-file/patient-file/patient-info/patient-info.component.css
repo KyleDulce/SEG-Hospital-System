@@ -1,0 +1,30 @@
+.patient-info-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.patient-info-text {
+  font-weight: bolder;
+}
+
+.patient-info-label {
+  font-weight: lighter;
+}
+
+.patient-info-tile {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+}
+
+p {
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+}
+.patient-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+

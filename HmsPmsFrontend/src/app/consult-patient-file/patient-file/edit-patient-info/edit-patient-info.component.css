@@ -1,0 +1,42 @@
+
+  .edit-patient-info-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .edit-patient-info-text {
+    font-weight: bolder;
+  }
+  
+  .edit-patient-info-label {
+    font-weight: lighter;
+  }
+  
+  
+  
+  .edit-patient-info-tile {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%; 
+    margin-right: 2%;
+    margin-bottom: 1rem; 
+  }
+  
+  .mat-form-field {
+    margin-bottom: 1rem; 
+    margin-right: 5rem;
+  }
+  
+  p {
+    margin: 0 0 0.5rem 0;
+    padding: 0;
+  }
+
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  
+}
+
+
+  

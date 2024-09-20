@@ -1,0 +1,50 @@
+<div *ngIf="admissionRecords" class="admission-section">
+  <div class="admission-title">
+    <span>Admission Records</span>
+    <span class="admission-buttons-right">
+      <button mat-flat-button *ngIf="staffType === 'ChargeNurse' && !isPatientAdmitted" (click)="admitPatient()">Admit</button>
+      <button mat-flat-button *ngIf="staffType === 'ChargeNurse' && isPatientAdmitted" (click)="dischargePatient()">Discharge</button>
+      <button mat-flat-button *ngIf="staffType === 'ChargeNurse' && !isPatientAdmitted" (click)="requestAdmission()">Request Admission</button>
+    </span>
+  </div>
+
+  <table mat-table [dataSource]="admissionRecords" class="mat-elevation-z8">
+    <ng-container matColumnDef="recordId">
+      <th mat-header-cell *matHeaderCellDef>Record ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.recordId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="localDoctor">
+      <th mat-header-cell *matHeaderCellDef>Local Doctor ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.localDoctor }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="divisionId">
+      <th mat-header-cell *matHeaderCellDef>Division ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.divisionId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomNum">
+      <th mat-header-cell *matHeaderCellDef>Room Number</th>
+      <td mat-cell *matCellDef="let element">{{ element.roomNum }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="bedNumber">
+      <th mat-header-cell *matHeaderCellDef>Record ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.bedNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="privInsuranceNum">
+      <th mat-header-cell *matHeaderCellDef>Private Insurance Number</th>
+      <td mat-cell *matCellDef="let element">{{ element.privInsuranceNum }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="discharged">
+      <th mat-header-cell *matHeaderCellDef>Discharged</th>
+      <td mat-cell *matCellDef="let element">{{ element.discharged }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -1,0 +1,23 @@
+.app-parent-container {
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
+.app-parent-router-enclosing {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+router-outlet + * {
+    flex: 1 1 auto;
+}
+
+.app-parent-route-button {
+    border: 1px solid #F5F5F5!important; 
+    margin: 1rem;
+}
+.fill-remaining-space {
+    flex: 1 1 auto;
+  }

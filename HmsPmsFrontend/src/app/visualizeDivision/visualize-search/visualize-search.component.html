@@ -1,0 +1,7 @@
+<div class="visualize-search-container">
+    <h1 class="visualize-search-title">Search Divisions</h1>
+    <mat-form-field subscriptSizing="dynamic" class="visualize-search-field">
+        <mat-label>Division ID</mat-label>
+        <input type="text" matInput [ngModel]="division" (ngModelChange)="onDivisionChange($event)"/>
+    </mat-form-field>
+</div>

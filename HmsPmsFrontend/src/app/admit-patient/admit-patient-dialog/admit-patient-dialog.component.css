@@ -1,0 +1,81 @@
+
+.admit-patient-container {
+    padding: 2rem;
+}
+
+.admit-patient-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+}
+
+.admit-patient-title {
+    color: #303030;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+.admit-patient-header > * {
+    margin: 0;
+}
+
+.admit-patient-piv {
+    width: 30rem;
+}
+
+.admit-patient-content {
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+}
+
+.admit-patient-table {
+    height: 25rem;
+    width: 25rem;
+    overflow-y: scroll;
+    margin: 0;
+}
+
+.admit-patient-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 2.25rem;
+}
+
+.admit-patient-fields-data {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 13rem;
+}
+
+.admit-patient-fields-data > * {
+    margin: 0;
+}
+
+.admit-patient-buttons {
+    flex: 0 0 auto;
+    justify-content: right;
+}
+
+.admit-patient-buttons > * {
+    float: right;
+    margin-left: 1.5rem;
+}
+
+.admit-patient-admit-button {
+    background-color: #2255A2;
+    color: #FFFFFF;
+}
+
+.admit-patient-cancel-button {
+    background-color: #A1A1A1;
+    color: #FFFFFF;
+}

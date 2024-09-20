@@ -1,0 +1,52 @@
+<div *ngIf="patient" class="patient-info">
+  <div class="patient-info-header">
+    <p class="patient-info-title">Patient Information</p>
+    <button mat-raised-button color="primary" *ngIf="!editingPatient" (click)="editPatient()">Edit</button>
+  </div>
+
+
+  <div *ngIf="!editingPatient">
+    <p><span class="patient-info-label">Patient ID:</span> {{ patient.patientId }}</p>
+    <div>
+      <div class="patient-info-tile">
+        <p><span class="patient-info-label">First Name:</span> {{ patient.firstName }}</p>
+        <p><span class="patient-info-label">Last Name:</span> {{ patient.lastName }}</p>
+        <p><span class="patient-info-label">Gender:</span> {{ patient.gender }}</p>
+        <p><span class="patient-info-label">Date of Birth:</span> {{ patient.dateOfBirth }}</p>
+        <p><span class="patient-info-label">Martial Status:</span> {{ patient.martialStatus }}</p>
+        <p><span class="patient-info-label">Telephone:</span> {{ patient.telephone }}</p>
+        <p><span class="patient-info-label">Gov Insurance Number:</span> {{ patient.govInsuranceNum }}</p>
+        <p><span class="patient-info-label">External Doctor ID:</span> {{ patient.extDoctorId }}</p>
+      </div>
+      <div *ngIf="address" class="patient-info-tile">
+        <p><span class="patient-info-label">Address</span></p>
+        <p><span class="patient-info-label">Street Number:</span> {{ address.streetNum }}</p>
+        <p><span class="patient-info-label">Apartment Number:</span> {{ address.aptNumber }}</p>
+        <p><span class="patient-info-label">Street Name:</span> {{ address.streetName }}</p>
+        <p><span class="patient-info-label">City:</span> {{ address.city }}</p>
+        <p><span class="patient-info-label">Postal Code:</span> {{ address.postalCode }}</p>
+        <p><span class="patient-info-label">Province:</span> {{ address.province }}</p>
+        <p><span class="patient-info-label">Country:</span> {{ address.country }}</p>
+      </div>
+      <div *ngIf="nextOfKin" class="patient-info-tile patient-info-kin">
+        <p><span class="patient-info-label">Next of Kin</span></p>
+        <p><span class="patient-info-label">First Name:</span> {{ nextOfKin.firstName }}</p>
+        <p><span class="patient-info-label">Last Name:</span> {{ nextOfKin.lastName }}</p>
+        <p><span class="patient-info-label">Telephone:</span> {{ nextOfKin.telephone }}</p>
+        <p><span class="patient-info-label">Relationship:</span> {{ nextOfKin.relationshipToPatient }}</p>
+      </div>
+      <div *ngIf="nextOfKin" class="patient-info-tile">
+        <p><span class="patient-info-label">Next of Kin's Address</span></p>
+        <p><span class="patient-info-label">Street Number:</span> {{ nextOfKin.address.streetNum }}</p>
+        <p><span class="patient-info-label">Apartment Number:</span> {{ nextOfKin.address.aptNumber }}</p>
+        <p><span class="patient-info-label">Street Name:</span> {{ nextOfKin.address.streetName }}</p>
+        <p><span class="patient-info-label">City:</span> {{ nextOfKin.address.city }}</p>
+        <p><span class="patient-info-label">Postal Code:</span> {{ nextOfKin.address.postalCode }}</p>
+        <p><span class="patient-info-label">Province:</span> {{ nextOfKin.address.province }}</p>
+        <p><span class="patient-info-label">Country:</span> {{ nextOfKin.address.country }}</p>
+      </div>
+    </div>
+  </div>
+  <app-edit-patient-info [patientData]="patient" [address]="address" [nextOfKin]="nextOfKin"
+    [patientId]="patient.patientId" *ngIf="editingPatient" (cancelEdit)="cancelEdit()"></app-edit-patient-info>
+</div>

@@ -1,0 +1,43 @@
+<div class="request-list-wrapper">
+    <div class="request-list-heading">
+        <h1>Request List</h1>
+    </div>
+
+    <div class="request-list-container">
+        <div class="request-list-card">
+            <div class="request-list-title">
+                <h1>
+                    Admission Requests - Division {{divisionInformation.division.identifier}}
+                    <ng-container *ngIf="divisionInformation.division.status === 'complete'"> - Complete</ng-container>
+                </h1>
+            </div>
+            <div class="request-list-table-container mat-elevation-z4">
+                <table mat-table [dataSource]="admitRequests">
+
+                    <ng-container matColumnDef="patientId">
+                        <mat-header-cell *matHeaderCellDef>Patient ID</mat-header-cell>
+                        <mat-cell *matCellDef="let admitReq;">{{admitReq.patientId}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="patientName">
+                        <mat-header-cell *matHeaderCellDef>Patient Name</mat-header-cell>
+                        <mat-cell *matCellDef="let admitReq;">{{admitReq.patientFullName}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="rationale">
+                        <mat-header-cell *matHeaderCellDef>Rationale</mat-header-cell>
+                        <mat-cell *matCellDef="let admitReq;">{{admitReq.rationale}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="priority">
+                        <mat-header-cell *matHeaderCellDef>Priority</mat-header-cell>
+                        <mat-cell *matCellDef="let admitReq;">{{admitReq.priority}}</mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+                    <mat-row class="request-list-table-row" *matRowDef="let row; columns: tableColumns; let i = index;" (click)="choosePatient(i)" matRipple></mat-row>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

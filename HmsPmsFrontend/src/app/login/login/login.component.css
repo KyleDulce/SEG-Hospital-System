@@ -1,0 +1,87 @@
+
+.login-wrapper {
+    height: 100vh;
+    background-color: #ECECEC;
+    display: flex;
+}
+
+.login-container {
+    height: 25rem;
+    max-width: 50rem;
+    width: 50rem;
+    margin: auto;
+    border-radius: 1.875rem;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.login-title {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 2.44rem;
+}
+
+.login-title > h1 {
+    color: #2255A2;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    margin: 0;
+}
+
+.login-title > h2 {
+    color: #A1A1A1;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin: 0;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-form-fields {
+    width: 100%;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.login-form-fields > * {
+    width: 36rem;
+}
+
+.login-form-footer {
+    width: 100%;
+    margin: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.login-form-buttons {
+    width: 36rem;
+    display: inline-flex;
+    vertical-align: middle;
+    flex-direction: row-reverse;
+}
+
+.login-form-login {
+    background-color: #2255A2!important; 
+    color: #FFFFFF!important;
+}
+
+.login-form-create {
+    line-height: 2.25rem;
+    margin-right: 2rem;
+
+    color: #303030;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    text-decoration-line: underline;
+}

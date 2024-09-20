@@ -1,0 +1,19 @@
+.admission-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+}
+
+.admission-section {
+  padding-top: 1.5rem;
+}
+
+.admission-buttons-right {
+  float: right;
+}
+
+.admission-buttons-right > button {
+  background-color: #2255A2; 
+  color: #FFFFFF;
+  margin-left: 0.5rem;
+}

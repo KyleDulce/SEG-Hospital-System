@@ -1,0 +1,52 @@
+<form class="prescribe-wrapper" [formGroup]="prescribeForm">
+    <div class="prescribe-header">
+        <div><h1 class="prescribe-title">Prescribe Medication</h1></div>
+        <div>Patient ID: <strong>{{data.patientId}}</strong></div>
+    </div>
+    <div class="prescribe-content">
+        <div class="prescribe-content-col">
+            <mat-form-field subscriptSizing="dynamic" class="prescribe-field">
+                <mat-label>Medication ID</mat-label>
+                <input type="number" matInput formControlName="medId"/>
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic" class="prescribe-field">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name"/>
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic" class="prescribe-field">
+                <mat-label>Method of Admin:</mat-label>
+                <input type="text" matInput formControlName="methodOfAdmin"/>
+            </mat-form-field>
+        </div>
+        <div class="prescribe-content-col">
+            <mat-form-field subscriptSizing="dynamic" class="prescribe-field">
+                <mat-label>Units Per Day</mat-label>
+                <input type="number" matInput formControlName="unitpd"/>
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic" class="prescribe-field">
+                <mat-label>Admins Per Day</mat-label>
+                <input type="number" matInput formControlName="adminpd"/>
+            </mat-form-field>
+        </div>
+        <div class="prescribe-content-col">
+            <mat-form-field class="prescribe-field">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="pickerStart" formControlName="start">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                <mat-datepicker #pickerStart></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="prescribe-field">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="pickerEnd" formControlName="end">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEnd></mat-datepicker>
+              </mat-form-field>
+        </div>
+    </div>
+    <div class="prescribe-actions">
+        <button mat-flat-button class="prescribe-cancel-button" (click)="cancel()">Cancel</button>
+        <button mat-flat-button class="prescribe-prescribe-button" (click)="prescribe()">Prescribe</button>
+    </div>
+</form>

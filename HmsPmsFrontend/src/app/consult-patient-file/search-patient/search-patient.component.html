@@ -1,0 +1,16 @@
+<div class="search-patient-box">
+  <div class="search-patient-title">Search Patient</div>
+  <div>
+    <form class="search-patient-form">
+      <mat-form-field class="search-patient-form-full-width">
+        <span matPrefix> </span>
+        <input type="text"
+               matInput
+               placeholder="Patient Id"
+               name="patientId"
+               [(ngModel)]="patientId">
+        <button matSuffix mat-button (click)="submit()"><mat-icon>search</mat-icon></button>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

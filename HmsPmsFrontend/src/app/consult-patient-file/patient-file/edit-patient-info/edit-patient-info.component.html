@@ -1,0 +1,130 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <div class="patient-info">
+    <div>
+      <p><span class="edit-patient-info-label">Patient ID:</span> {{ patientData.patientId }}</p>
+      <div>
+        <div class="edit-patient-info-tile">
+          <p><span class="edit-patient-info-label">Patient Info</span></p>
+          <mat-form-field>
+            <mat-label>First Name:</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last Name:</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Gender:</mat-label>
+            <input matInput formControlName="gender" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Date of Birth:</mat-label>
+            <input matInput formControlName="dateOfBirth" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Martial Status:</mat-label>
+            <input matInput formControlName="martialStatus" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Telephone:</mat-label>
+            <input matInput formControlName="telephone" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Gov Insurance Number:</mat-label>
+            <input matInput formControlName="govInsuranceNum" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>External Doctor ID:</mat-label>
+            <input matInput formControlName="extDoctorId" />
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="address" class="edit-patient-info-tile">
+          <p><span class="edit-patient-info-label">Patient Address</span></p>
+          <mat-form-field>
+            <mat-label>Street Number:</mat-label>
+            <input matInput formControlName="patientStreetNum" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Apartment Number:</mat-label>
+            <input matInput formControlName="patientAptNum" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Street Name:</mat-label>
+            <input matInput formControlName="patientStreetName" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>City:</mat-label>
+            <input matInput formControlName="patientCity" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Postal Code:</mat-label>
+            <input matInput formControlName="patientPostalCode" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Province:</mat-label>
+            <input matInput formControlName="patientProvince" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Country:</mat-label>
+            <input matInput formControlName="patientCountry" />
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="nextOfKin" class="edit-patient-info-tile patient-info-kin">
+          <p><span class="edit-patient-info-label">Next of Kin</span></p>
+          <mat-form-field>
+            <mat-label>First Name:</mat-label>
+            <input matInput formControlName="nextOfKinFirstName" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last Name:</mat-label>
+            <input matInput formControlName="nextOfKinLastName" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Telephone:</mat-label>
+            <input matInput formControlName="nextOfKinTelephone" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Relationship:</mat-label>
+            <input matInput formControlName="relationship" />
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="nextOfKin" class="edit-patient-info-tile">
+          <p><span class="edit-patient-info-label">Next of Kin's Address</span></p>
+          <mat-form-field>
+            <mat-label>Street Number:</mat-label>
+            <input matInput formControlName="nOKStreetNum" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Apartment Number:</mat-label>
+            <input matInput formControlName="nOKAptNum" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Street Name:</mat-label>
+            <input matInput formControlName="nOKStreetName" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>City:</mat-label>
+            <input matInput formControlName="nOKCity" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Postal Code:</mat-label>
+            <input matInput formControlName="nOKPostalCode" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Province:</mat-label>
+            <input matInput formControlName="nOKProvince" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Country:</mat-label>
+            <input matInput formControlName="nOKCountry" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" mat-raised-button color="primary">Save</button>
+  <button type="button" mat-raised-button (click)="cancelEdit.emit()">Cancel</button>
+</form>

@@ -1,0 +1,26 @@
+<div class="login-wrapper">
+    <div class="login-container">
+        <div class="login-title">
+            <h1>HMS</h1>
+            <h2>Staff Login</h2>
+        </div>
+        <form class="login-form" [formGroup]="loginForm">
+            <div class="login-form-fields">
+                <mat-form-field class="login-form-empId">
+                    <mat-label>Staff ID</mat-label>
+                    <input type="text" matInput formControlName="staffId" />
+                </mat-form-field>
+                <mat-form-field class="login-form-password">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password" />
+                </mat-form-field>
+            </div>
+            <div class="login-form-footer">
+                <div class="login-form-buttons">
+                    <button mat-flat-button class="login-form-login" (click)="onSubmit()">Login</button>
+                    <a routerLink="/register" class="login-form-create" [routerLink]="['/register']">Create Account</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

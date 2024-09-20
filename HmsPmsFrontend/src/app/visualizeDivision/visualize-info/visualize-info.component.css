@@ -1,0 +1,62 @@
+.visualize-info-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.visualize-info-header > h1 {
+    margin: 0;
+    color: #303030;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.visualize-info-not-found {
+    margin-top: 2rem;
+    color: #303030;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.division-info-status-container, .division-info-tables-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.division-info-content {
+    flex: 1 0 0px;
+    flex-wrap: wrap;
+}
+
+.division-info-status-row {
+    margin-top: 1rem;
+}
+
+.division-info-tables-container {
+    flex: 1 0 auto;
+    margin-top: 2.44rem;
+}
+
+.division-info-table-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.division-info-header {
+    color: #000;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.division-info-table-container {
+    flex: 1 0 auto;
+    overflow-y: scroll;
+}

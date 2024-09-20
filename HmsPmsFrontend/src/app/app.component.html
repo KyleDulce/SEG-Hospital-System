@@ -1,0 +1,22 @@
+<div class="app-parent-container">
+  <mat-toolbar *ngIf="showHeader" color="primary">
+    <mat-toolbar-row>
+      <span>HMS</span>
+      <button class="app-parent-route-button" mat-stroked-button routerLink="/patient-file">Patient</button>
+      <button class="app-parent-route-button" mat-stroked-button routerLink="/divisions">Divisions</button>
+      <button *ngIf="staffType === 'ChargeNurse'" class="app-parent-route-button" mat-stroked-button routerLink="/requests">Request List</button>
+      <button *ngIf="staffType === 'ChargeNurse' || staffType === 'Doctor'" class="app-parent-route-button" mat-stroked-button routerLink="/register-patient">Register Patient</button>
+      <span class="fill-remaining-space"></span>
+      <button mat-icon-button (click)="signout()">
+        <mat-icon>input</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>account_box</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <div class="app-parent-router-enclosing">
+    <router-outlet></router-outlet>
+  </div>
+</div>

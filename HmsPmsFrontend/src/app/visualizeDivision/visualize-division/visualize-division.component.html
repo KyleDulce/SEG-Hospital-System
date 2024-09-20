@@ -1,0 +1,19 @@
+<div class="division-wrapper">
+    <div class="division-header">
+        <h1>Divisions</h1>
+    </div>
+
+    <div class="division-container">
+        <div class="division-panel">
+            <div class="division-content-container division-content-left-container">
+                <visualize-search [(division)]="selectedDivision"></visualize-search>
+            </div>
+            <div class="division-content-container division-content-left-container division-bottom-container">
+                <visualize-browse [(selected)]="selectedDivision"></visualize-browse>
+            </div>
+        </div>
+        <div class="division-content-container division-right-container">
+            <visualize-info [selectedDivision]="selectedDivision" class="division-content-info"></visualize-info>
+        </div>
+    </div>
+</div>

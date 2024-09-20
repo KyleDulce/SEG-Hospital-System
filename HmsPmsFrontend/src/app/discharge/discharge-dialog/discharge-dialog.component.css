@@ -1,0 +1,43 @@
+.discharge-wrapper {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.discharge-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    gap: 1.5rem;
+}
+
+.discharge-header > * {
+    margin: 0;
+}
+
+.discharge-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.discharge-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+.discharge-actions > * {
+    margin-left: 1.5rem;
+}
+
+.discharge-confirm-button {
+    background-color: #2255A2;
+    color: #FFFFFF;
+}
+
+.discharge-cancel-button {
+    background-color: #A1A1A1;
+    color: #FFFFFF;
+}

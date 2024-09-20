@@ -1,0 +1,35 @@
+services:
+  hmspmsbackend:
+    container_name: HmsPms_Backend
+    build: ./HmsPmsBackend
+    depends_on:
+      - hmspmsdb
+    ports: 
+      - 8080:8080
+    environment:
+      - WAIT_HOSTS=hmspmsdb:5432
+      - WAIT_AFTER=10
+      - HMS_DB_LOCATION=hmspmsdb:5432
+
+  hmspmsfrontend:
+    container_name: HmsPms_Frontend
+    build: ./HmsPmsFrontend
+    depends_on:
+      - hmspmsbackend
+    ports:
+      - 80:80
+
+  hmspmsdb:
+    container_name: HmsPms_Database
+    build: ./postgres-def
+    ports: 
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=HmsPms
+    healthcheck:
+      test: ["CMD-SHELL", "pg_israedy", "-U", "postgres"]
+      interval: 5s
+      timeout: 60s
+      retries: 5
