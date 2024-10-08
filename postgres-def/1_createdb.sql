@@ -148,3 +148,33 @@ CREATE TABLE IF NOT EXISTS staff (
    modify_permission BOOLEAN NOT NULL,
    CONSTRAINT pk_staff PRIMARY KEY (employee_id)
 );
+
+CREATE TABLE IF NOT EXISTS patient_location (
+   id CHAR(36) NOT NULL,
+   street_num INTEGER NOT NULL,
+   street_name VARCHAR(50) NOT NULL,
+   apt_number SMALLINT NOT NULL,
+   postal_code VARCHAR(6) NOT NULL,
+   city VARCHAR(50) NOT NULL,
+   province VARCHAR(50) NOT NULL,
+   country VARCHAR(25) NOT NULL,
+   CONSTRAINT pk_patient_location PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS location_tracking (
+   patient_id CHAR(36) NOT NULL,
+   location_id CHAR(36) NOT NULL,
+   CONSTRAINT pk_location_tracking PRIMARY KEY (patient_id, location_id)
+);
+
+CREATE TABLE IF NOT EXISTS infection (
+   id CHAR(36) NOT NULL,
+   patient_id CHAR(36) NOT NULL,
+   infection_start_date DATE NOT NULL,
+   infection_end_date DATE,
+   CONSTRAINT pk_infection PRIMARY KEY (id)
+);
+
+CREATE TYPE infection_status 
+AS 
+ENUM('NOT INFECTED', 'MAY BE INFECTED', 'INFECTED');

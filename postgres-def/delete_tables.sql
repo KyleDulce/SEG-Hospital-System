@@ -12,5 +12,8 @@ DROP TABLE IF EXISTS medical_division;
 DROP TABLE IF EXISTS medication_admin;
 DROP TABLE IF EXISTS medication;
 DROP TABLE IF EXISTS patient_next_of_kin;
+DROP TABLE IF EXISTS infection;
+DROP TABLE IF EXISTS location_tracking;
+DROP TABLE IF EXISTS patient_location;
 DROP TABLE IF EXISTS patient;
 DROP TABLE IF EXISTS staff;

@@ -162,3 +162,42 @@ INSERT INTO medication (medication_num, patient_id, med_name, unit_by_day, admin
     (123123, '2c6ea163-f569-48ea-85b8-36606d0e03bf', 'super good meds', 5, 4, 'injection', '2020-05-08', '2020-06-08'),
     (246123, '081d1286-5342-4987-baf0-ca0cce83b3c5', 'super good meds sequel', 6, 7, 'oral', '2021-05-08', '2021-06-08');
 
+-- Existing Locations --
+INSERT INTO patient_location (id, street_num, street_name, apt_number, postal_code, city, province, country) VALUES
+    ('f1994f15-e591-4f92-acfa-27ddd01ed776', 1, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('95b10a52-a55a-4ae5-91bc-184bb8e28a49', 2, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('e35d6b9d-37cf-4df5-b110-3f27e7862cd2', 3, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('57117786-dd72-4d61-b4b4-efe0399bdbaa', 4, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('9d41c91e-1288-488c-88c5-2ec858a72fc2', 5, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('16e6d50e-0c60-4c5c-837f-20fc7e6c4771', 6, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('2fa8eb06-73f4-4c6d-9ce9-77828cb56e28', 7, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('778f964e-eeba-4fe2-8375-05ebef5c624f', 8, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('649bedcb-038e-4c67-bb61-e48b12a8b099', 9, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('2183f528-aeb9-47b1-a818-3029441de15d', 10, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('a63bfb3d-7b76-4fad-b036-2ca94ae0de74', 11, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('4e64619f-3fa0-489e-ac48-b4abeeb5efdc', 12, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('d5e61ae6-1648-42bf-b23d-0ffd25d7a89d', 13, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('acbaeda8-bd5a-48ab-85c9-b728a0991f3f', 14, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry'),
+    ('bb4828d4-14b6-4b8d-a1c3-de3d0c3b79a9', 15, 'mainStreet', 0, '123456', 'someCity', 'someprovince', 'somecountry');
+	
+-- Existing Patient Locations Link --
+INSERT INTO location_tracking (patient_id, location_id) VALUES
+    ('2c6ea163-f569-48ea-85b8-36606d0e03bf', 'f1994f15-e591-4f92-acfa-27ddd01ed776'),
+	('2c6ea163-f569-48ea-85b8-36606d0e03bf', '95b10a52-a55a-4ae5-91bc-184bb8e28a49'),
+	('2c6ea163-f569-48ea-85b8-36606d0e03bf', 'e35d6b9d-37cf-4df5-b110-3f27e7862cd2'),
+	('2c6ea163-f569-48ea-85b8-36606d0e03bf', '57117786-dd72-4d61-b4b4-efe0399bdbaa'),
+	('2c6ea163-f569-48ea-85b8-36606d0e03bf', '9d41c91e-1288-488c-88c5-2ec858a72fc2'),
+	('2c6ea163-f569-48ea-85b8-36606d0e03bf', '16e6d50e-0c60-4c5c-837f-20fc7e6c4771'),
+    ('081d1286-5342-4987-baf0-ca0cce83b3c5', '2fa8eb06-73f4-4c6d-9ce9-77828cb56e28'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', '778f964e-eeba-4fe2-8375-05ebef5c624f'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', '649bedcb-038e-4c67-bb61-e48b12a8b099'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', '2183f528-aeb9-47b1-a818-3029441de15d'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', 'a63bfb3d-7b76-4fad-b036-2ca94ae0de74'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', '4e64619f-3fa0-489e-ac48-b4abeeb5efdc'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', 'd5e61ae6-1648-42bf-b23d-0ffd25d7a89d'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', 'acbaeda8-bd5a-48ab-85c9-b728a0991f3f'),
+	('081d1286-5342-4987-baf0-ca0cce83b3c5', 'bb4828d4-14b6-4b8d-a1c3-de3d0c3b79a9');
+
+-- Existing Infection --	
+INSERT INTO infection (id, patient_id, infection_start_date, infection_end_date) VALUES
+	('f1994f15-e591-4f92-acfa-27ddd01ed776', '2c6ea163-f569-48ea-85b8-36606d0e03bf', '2020-05-08', '2020-06-08');
