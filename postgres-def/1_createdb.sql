@@ -172,6 +172,7 @@ CREATE TABLE IF NOT EXISTS infection (
    patient_id CHAR(36) NOT NULL,
    infection_start_date DATE NOT NULL,
    infection_end_date DATE,
+   name TEXT NOT NULL,
    CONSTRAINT pk_infection PRIMARY KEY (id)
 );
 

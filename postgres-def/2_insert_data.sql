@@ -199,5 +199,5 @@ INSERT INTO location_tracking (patient_id, location_id) VALUES
 	('081d1286-5342-4987-baf0-ca0cce83b3c5', 'bb4828d4-14b6-4b8d-a1c3-de3d0c3b79a9');
 
 -- Existing Infection --	
-INSERT INTO infection (id, patient_id, infection_start_date, infection_end_date) VALUES
-	('f1994f15-e591-4f92-acfa-27ddd01ed776', '2c6ea163-f569-48ea-85b8-36606d0e03bf', '2020-05-08', '2020-06-08');
+INSERT INTO infection (id, patient_id, infection_start_date, infection_end_date, name) VALUES
+	('f1994f15-e591-4f92-acfa-27ddd01ed776', '2c6ea163-f569-48ea-85b8-36606d0e03bf', '2020-05-08', '2020-06-08', 'COVID-19');
