@@ -2,6 +2,7 @@ package me.group8.HmsPmsBackend.domain.patient.facades
 
 import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
 import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
+import me.group8.HmsPmsBackend.domain.patient.entities.Infection
 import me.group8.HmsPmsBackend.domain.patient.entities.Patient
 
 interface PatientFacade {
@@ -14,5 +15,7 @@ interface PatientFacade {
     fun isPatientInDivision(patientId: String): Boolean
     fun getPatientInfo(patientId: String): Patient?
     fun getAllPatientAdmission(patientId: String): Array<AdmissionRecord>
+
+    fun getAllPatientInfections(patientId: String): Array<Infection>
 
 }

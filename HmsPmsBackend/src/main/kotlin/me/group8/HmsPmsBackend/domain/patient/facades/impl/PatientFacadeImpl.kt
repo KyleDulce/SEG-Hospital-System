@@ -3,12 +3,14 @@ package me.group8.HmsPmsBackend.domain.patient.facades.impl
 import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
 import me.group8.HmsPmsBackend.application.services.ExtNotificationService
 import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
+import me.group8.HmsPmsBackend.domain.patient.entities.Infection
 import me.group8.HmsPmsBackend.domain.patient.facades.PatientFacade
 import me.group8.HmsPmsBackend.domain.patient.factories.AdmissionRecordFactory
 import me.group8.HmsPmsBackend.domain.patient.factories.PatientFactory
 import me.group8.HmsPmsBackend.domain.patient.repositories.AdmissionRecordRepository
 import me.group8.HmsPmsBackend.domain.patient.repositories.PatientRepository
 import me.group8.HmsPmsBackend.domain.patient.entities.Patient
+import me.group8.HmsPmsBackend.domain.patient.repositories.InfectionRepository
 import org.springframework.stereotype.Service
 
 
@@ -18,6 +20,7 @@ class PatientFacadeImpl(
     val patientRepository: PatientRepository,
     val admissionRecordFactory: AdmissionRecordFactory,
     val admissionRecordRepository: AdmissionRecordRepository,
+    val infectionRepository: InfectionRepository,
     val extNotificationService: ExtNotificationService
 ): PatientFacade {
 
@@ -109,6 +112,10 @@ class PatientFacadeImpl(
 
     override fun getAllPatientAdmission(patientId: String): Array<AdmissionRecord> {
         return admissionRecordRepository.findAllByPatientId(patientId)
+    }
+
+    override fun getAllPatientInfections(patientId: String): Array<Infection> {
+        return infectionRepository.findAllByPatientId(patientId)
     }
 
 }
