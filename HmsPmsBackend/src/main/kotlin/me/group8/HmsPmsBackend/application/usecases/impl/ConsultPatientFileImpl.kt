@@ -7,6 +7,7 @@ import me.group8.HmsPmsBackend.domain.patient.entities.Patient
 import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
 import me.group8.HmsPmsBackend.domain.medication.facades.MedicationFacade
 import me.group8.HmsPmsBackend.domain.medication.entities.Medication
+import me.group8.HmsPmsBackend.domain.patient.entities.Infection
 import org.springframework.stereotype.Service
 import java.time.Instant
 import java.util.Date
@@ -28,6 +29,10 @@ class ConsultPatientFileImpl(
 
     override fun getAllPatientPrescriptions(patientId: String): Array<Medication> {
         return medicationFacade.getAllPatientPrescriptions(patientId)
+    }
+
+    override fun getAllPatientInfections(patientId: String): Array<Infection> {
+        return patientFacade.getAllPatientInfections(patientId)
     }
 
     override fun logAccess(employeeId: String, patientId: String) {
