@@ -46,6 +46,7 @@ import { RequestListComponent } from './request-list/request-list/request-list.c
 import { EditPatientInfoComponent } from './consult-patient-file/patient-file/edit-patient-info/edit-patient-info.component';
 import { DischargeDialogComponent } from './discharge/discharge-dialog/discharge-dialog.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { ModifyInfectionDialogComponent } from './consult-patient-file/modify-infection-dialog/modify-infection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
     EditPatientInfoComponent,
     DischargeDialogComponent,
     LoginComponent,
-    RegisterPatientComponent
+    RegisterPatientComponent,
+    ModifyInfectionDialogComponent
   ],
   imports: [
     BrowserModule,
