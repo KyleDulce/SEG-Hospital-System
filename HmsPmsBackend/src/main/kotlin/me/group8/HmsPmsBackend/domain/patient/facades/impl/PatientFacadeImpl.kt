@@ -1,5 +1,6 @@
 package me.group8.HmsPmsBackend.domain.patient.facades.impl
 
+import me.group8.HmsPmsBackend.application.dtos.queries.InfectionDto
 import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
 import me.group8.HmsPmsBackend.application.services.ExtNotificationService
 import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
@@ -10,6 +11,7 @@ import me.group8.HmsPmsBackend.domain.patient.factories.PatientFactory
 import me.group8.HmsPmsBackend.domain.patient.repositories.AdmissionRecordRepository
 import me.group8.HmsPmsBackend.domain.patient.repositories.PatientRepository
 import me.group8.HmsPmsBackend.domain.patient.entities.Patient
+import me.group8.HmsPmsBackend.domain.patient.factories.InfectionFactory
 import me.group8.HmsPmsBackend.domain.patient.repositories.InfectionRepository
 import org.springframework.stereotype.Service
 
@@ -21,6 +23,7 @@ class PatientFacadeImpl(
     val admissionRecordFactory: AdmissionRecordFactory,
     val admissionRecordRepository: AdmissionRecordRepository,
     val infectionRepository: InfectionRepository,
+    val infectionFactory: InfectionFactory,
     val extNotificationService: ExtNotificationService
 ): PatientFacade {
 
@@ -116,6 +119,22 @@ class PatientFacadeImpl(
 
     override fun getAllPatientInfections(patientId: String): Array<Infection> {
         return infectionRepository.findAllByPatientId(patientId)
+    }
+
+    override fun addInfection(infectionInfo: InfectionDto): Boolean {
+        val infectionInst = infectionFactory.createInfection(infectionInfo)
+        infectionRepository.save(infectionInst)
+        return true
+    }
+    override fun updateInfection(infectionId: String, infectionInfo: InfectionDto) {
+        val infection = infectionRepository.find(infectionId)
+        if(infection == null) {
+            return
+        }
+
+        infection.updateInfo(infectionInfo)
+        infectionRepository.save(infection)
+
     }
 
 }
