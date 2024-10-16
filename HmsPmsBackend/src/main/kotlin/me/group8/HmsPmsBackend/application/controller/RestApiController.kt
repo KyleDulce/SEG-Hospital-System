@@ -40,6 +40,7 @@ class RestApiController(
     private val admitPatientFromRequestList: AdmitPatientFromRequestList,
     private val dischargePatient: DischargePatient,
     private val registerPatient: RegisterPatient,
+    private val infection: me.group8.HmsPmsBackend.application.usecases.Infection,
 ) {
 
     @PostMapping("/login")
@@ -205,6 +206,44 @@ class RestApiController(
             return ResponseEntity.ok("Patient updated successfully")
         } else {
             return ResponseEntity.badRequest().body("Failed to update patient")
+        }
+    }
+
+    @PostMapping("/infection")
+    fun addInfection(@RequestBody request: InfectionRequest): ResponseEntity<String> {
+        val userDetails = SecurityContextHolder.getContext().authentication.principal as Jwt
+        val employeeId = userDetails.subject
+
+        val result = infection.addInfection(InfectionDto(
+                request.patientId,
+                TypeUtils.parseDate(request.startDate),
+                TypeUtils.parseDate(request.endDate),
+                request.name
+        ), employeeId);
+
+        if(result) {
+            return ResponseEntity.ok().build()
+        } else {
+            return ResponseEntity.badRequest().build()
+        }
+    }
+
+    @PutMapping("/infection/{infectionId}")
+    fun updateInfection(@PathVariable("infectionId") infectionId: String, @RequestBody request: InfectionRequest): ResponseEntity<String> {
+        val userDetails = SecurityContextHolder.getContext().authentication.principal as Jwt
+        val employeeId = userDetails.subject
+
+        val result = infection.updateInfection(infectionId, InfectionDto(
+                request.patientId,
+                TypeUtils.parseDate(request.startDate),
+                TypeUtils.parseDate(request.endDate),
+                request.name
+        ), employeeId);
+
+        if(result) {
+            return ResponseEntity.ok().build()
+        } else {
+            return ResponseEntity.badRequest().build()
         }
     }
 

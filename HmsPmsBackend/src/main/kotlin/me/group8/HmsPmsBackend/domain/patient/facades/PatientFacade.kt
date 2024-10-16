@@ -1,5 +1,6 @@
 package me.group8.HmsPmsBackend.domain.patient.facades
 
+import me.group8.HmsPmsBackend.application.dtos.queries.InfectionDto
 import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
 import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
 import me.group8.HmsPmsBackend.domain.patient.entities.Infection
@@ -17,5 +18,7 @@ interface PatientFacade {
     fun getAllPatientAdmission(patientId: String): Array<AdmissionRecord>
 
     fun getAllPatientInfections(patientId: String): Array<Infection>
+    fun addInfection(infectionInfo: InfectionDto): Boolean
+    fun updateInfection(infectionId: String, infectionInfo: InfectionDto)
 
 }
