@@ -5,6 +5,7 @@ import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
 import me.group8.HmsPmsBackend.application.services.ExtNotificationService
 import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
 import me.group8.HmsPmsBackend.domain.patient.entities.Infection
+import me.group8.HmsPmsBackend.domain.patient.entities.InfectionStatus
 import me.group8.HmsPmsBackend.domain.patient.facades.PatientFacade
 import me.group8.HmsPmsBackend.domain.patient.factories.AdmissionRecordFactory
 import me.group8.HmsPmsBackend.domain.patient.factories.PatientFactory
@@ -14,6 +15,7 @@ import me.group8.HmsPmsBackend.domain.patient.entities.Patient
 import me.group8.HmsPmsBackend.domain.patient.factories.InfectionFactory
 import me.group8.HmsPmsBackend.domain.patient.repositories.InfectionRepository
 import org.springframework.stereotype.Service
+import java.util.Date
 
 
 @Service
@@ -126,6 +128,7 @@ class PatientFacadeImpl(
         infectionRepository.save(infectionInst)
         return true
     }
+
     override fun updateInfection(infectionId: String, infectionInfo: InfectionDto) {
         val infection = infectionRepository.find(infectionId)
         if(infection == null) {
@@ -135,6 +138,20 @@ class PatientFacadeImpl(
         infection.updateInfo(infectionInfo)
         infectionRepository.save(infection)
 
+    }
+
+    override fun getPatientInfectionStatus(patientId: String): InfectionStatus {
+        val infections = infectionRepository.findAllByPatientId(patientId)
+        val currentDate = Date() // Get the current date
+
+        for (data in infections) {
+            // Check if the end date is null or if it is after today
+            if (data.endDate == null || data.endDate.after(currentDate)) {
+                return InfectionStatus.INFECTED
+            }
+            // MAY BE INFECTED status is not implemented yet
+        }
+        return InfectionStatus.NOT_INFECTED
     }
 
 }

@@ -5,11 +5,10 @@ import me.group8.HmsPmsBackend.application.dtos.queries.*
 import me.group8.HmsPmsBackend.application.security.jwt.JwtUtils
 import me.group8.HmsPmsBackend.application.usecases.*
 import me.group8.HmsPmsBackend.domain.medication.entities.Medication
+import me.group8.HmsPmsBackend.domain.patient.entities.*
 import me.group8.HmsPmsBackend.domain.patient.entities.Address
-import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
 import me.group8.HmsPmsBackend.domain.patient.entities.Infection
 import me.group8.HmsPmsBackend.domain.patient.entities.NextOfKin
-import me.group8.HmsPmsBackend.domain.patient.entities.Patient
 import me.group8.HmsPmsBackend.utils.StaffType
 import me.group8.HmsPmsBackend.utils.TypeUtils
 import org.springframework.http.HttpStatus
@@ -153,6 +152,7 @@ class RestApiController(
         var admissionRecords: Array<AdmissionRecord> = consultPatientFile.getAllPatientAdmission(patientId)
         var prescriptions: Array<Medication> = consultPatientFile.getAllPatientPrescriptions(patientId)
         var infections: Array<Infection> = consultPatientFile.getAllPatientInfections(patientId)
+        var infectionStatus: InfectionStatus = consultPatientFile.getPatientInfectionStatus(patientId)
 
         if (patientInfo == null){
             return ResponseEntity.notFound().build()
@@ -161,7 +161,7 @@ class RestApiController(
         consultPatientFile.logAccess(employeeId, patientId)
 
         return ResponseEntity.ok(
-            ConsultPatientFileResponse(patientInfo, admissionRecords, prescriptions, infections)
+            ConsultPatientFileResponse(patientInfo, admissionRecords, prescriptions, infections, infectionStatus)
         )
     }
 
