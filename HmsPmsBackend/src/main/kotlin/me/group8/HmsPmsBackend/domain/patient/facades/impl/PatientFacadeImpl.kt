@@ -142,17 +142,44 @@ class PatientFacadeImpl(
 
     }
 
-    override fun getPatientInfectionStatus(patientId: String): InfectionStatus {
+    private fun getPatientIsInfected(patientId: String): Boolean {
         val infections = infectionRepository.findAllByPatientId(patientId)
         val currentDate = Date() // Get the current date
 
         for (data in infections) {
             // Check if the end date is null or if it is after today
             if (data.endDate == null || data.endDate.after(currentDate)) {
-                return InfectionStatus.INFECTED
+                return true
             }
-            // MAY BE INFECTED status is not implemented yet
         }
+
+        return false
+    }
+
+    override fun getPatientInfectionStatus(patientId: String): InfectionStatus {
+        // check if patient is infected
+        if (getPatientIsInfected(patientId)) {
+            return InfectionStatus.INFECTED
+        }
+
+        val locations = locationRepository.findAllByPatientId(patientId)
+        val patientSameLoc = mutableSetOf<String>()
+
+        // get all the patients that were in the same location
+        for (loc in locations) {
+            val patients = locationRepository.findPatientIdsByLocationId(loc?.locationId)
+            for (p in patients) {
+                patientSameLoc.add(p)
+            }
+        }
+
+        // check if any of the patients in the same location are infected
+        for (pId in patientSameLoc) {
+            if (getPatientIsInfected(pId)) {
+                return InfectionStatus.MAY_BE_INFECTED
+            }
+        }
+
         return InfectionStatus.NOT_INFECTED
     }
 

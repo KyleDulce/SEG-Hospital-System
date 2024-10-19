@@ -8,8 +8,8 @@ import java.io.Serializable
 class LocationTrackingId(
         @Column(name = "patient_id")
         var patientId: String,
-        @Column
-        var location_id: String
+        @Column(name = "location_id")
+        var locationId: String
 ): Serializable {
     constructor() : this("", "") {
 

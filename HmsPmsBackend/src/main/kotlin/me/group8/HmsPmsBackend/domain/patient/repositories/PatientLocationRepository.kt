@@ -7,4 +7,5 @@ interface PatientLocationRepository {
     fun find(locationId: String): Location?
     fun findAllByPatientId(patientId: String): Array<Location?>
     fun saveLocationTracking(locationId: String, patientId: String)
+    fun findPatientIdsByLocationId(locationId: String?): Array<String>
 }
