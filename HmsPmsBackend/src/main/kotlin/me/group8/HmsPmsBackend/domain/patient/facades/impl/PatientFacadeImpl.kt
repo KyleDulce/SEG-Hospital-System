@@ -1,5 +1,6 @@
 package me.group8.HmsPmsBackend.domain.patient.facades.impl
 
+import me.group8.HmsPmsBackend.application.dtos.queries.AddressCreateDto
 import me.group8.HmsPmsBackend.application.dtos.queries.InfectionDto
 import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
 import me.group8.HmsPmsBackend.application.services.ExtNotificationService
@@ -10,6 +11,7 @@ import me.group8.HmsPmsBackend.domain.patient.factories.PatientFactory
 import me.group8.HmsPmsBackend.domain.patient.repositories.AdmissionRecordRepository
 import me.group8.HmsPmsBackend.domain.patient.repositories.PatientRepository
 import me.group8.HmsPmsBackend.domain.patient.factories.InfectionFactory
+import me.group8.HmsPmsBackend.domain.patient.factories.LocationFactory
 import me.group8.HmsPmsBackend.domain.patient.repositories.InfectionRepository
 import me.group8.HmsPmsBackend.domain.patient.repositories.PatientLocationRepository
 import org.springframework.stereotype.Service
@@ -25,6 +27,7 @@ class PatientFacadeImpl(
         val infectionRepository: InfectionRepository,
         val infectionFactory: InfectionFactory,
         val locationRepository: PatientLocationRepository,
+        val locationFactory: LocationFactory,
         val extNotificationService: ExtNotificationService
 ): PatientFacade {
 
@@ -155,6 +158,28 @@ class PatientFacadeImpl(
 
     override fun getAllPatientLocations(patientId: String): Array<Location?> {
         return locationRepository.findAllByPatientId(patientId)
+    }
+
+    override fun addLocationTracking(locationId: String, patientId: String): Boolean {
+        locationRepository.saveLocationTracking(locationId, patientId)
+        return true
+    }
+
+    override fun addLocation(locationInfo: AddressCreateDto): String {
+        val locationInst = locationFactory.createLocation(locationInfo)
+        locationRepository.save(locationInst)
+        return locationInst.locationId
+    }
+
+    override fun updateLocation(locationId: String, locationInfo: AddressCreateDto) {
+        val location = locationRepository.find(locationId)
+        if(location == null) {
+            return
+        }
+
+        location.updateInfo(locationInfo)
+        locationRepository.save(location)
+
     }
 
 }

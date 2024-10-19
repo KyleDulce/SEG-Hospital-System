@@ -1,7 +1,10 @@
 package me.group8.HmsPmsBackend.domain.patient.repositories.impl
 
 import jakarta.persistence.Column
+import me.group8.HmsPmsBackend.application.db.postgres.entities.LocationTrackingEntity
+import me.group8.HmsPmsBackend.application.db.postgres.entities.MedicationEntity
 import me.group8.HmsPmsBackend.application.db.postgres.entities.PatientLocationEntity
+import me.group8.HmsPmsBackend.application.db.postgres.entities.id.LocationTrackingId
 import me.group8.HmsPmsBackend.application.db.postgres.repository.LocationTrackingTableRepository
 import me.group8.HmsPmsBackend.application.db.postgres.repository.PatientLocationTableRepository
 import me.group8.HmsPmsBackend.domain.patient.entities.Location
@@ -25,6 +28,16 @@ class PatientLocationRepositoryImpl (
             return null
         }
         return entityToLocation(locationOpt.get())
+    }
+
+    override fun saveLocationTracking(locationId: String, patientId: String) {
+        val locationTrackingId = LocationTrackingId(patientId, locationId)
+
+        // check that entity does not exist before adding it
+        if ( locationTrackingRepository.findById(locationTrackingId).isEmpty) {
+            val locationTracking = LocationTrackingEntity(locationTrackingId)
+            locationTrackingRepository.save(locationTracking)
+        }
     }
 
     private fun locationToEntity(location: Location): PatientLocationEntity {
