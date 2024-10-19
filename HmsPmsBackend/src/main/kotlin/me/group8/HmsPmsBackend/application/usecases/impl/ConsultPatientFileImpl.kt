@@ -3,12 +3,9 @@ package me.group8.HmsPmsBackend.application.usecases.impl
 import me.group8.HmsPmsBackend.application.usecases.ConsultPatientFile
 import me.group8.HmsPmsBackend.domain.log.facades.LogFacade
 import me.group8.HmsPmsBackend.domain.patient.facades.PatientFacade
-import me.group8.HmsPmsBackend.domain.patient.entities.Patient
-import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
 import me.group8.HmsPmsBackend.domain.medication.facades.MedicationFacade
 import me.group8.HmsPmsBackend.domain.medication.entities.Medication
-import me.group8.HmsPmsBackend.domain.patient.entities.Infection
-import me.group8.HmsPmsBackend.domain.patient.entities.InfectionStatus
+import me.group8.HmsPmsBackend.domain.patient.entities.*
 import org.springframework.stereotype.Service
 import java.time.Instant
 import java.util.Date
@@ -38,6 +35,10 @@ class ConsultPatientFileImpl(
 
     override fun getPatientInfectionStatus(patientId: String): InfectionStatus {
         return patientFacade.getPatientInfectionStatus(patientId)
+    }
+
+    override fun getAllPatientLocations(patientId: String): Array<Location?> {
+        return patientFacade.getAllPatientLocations(patientId)
     }
 
     override fun logAccess(employeeId: String, patientId: String) {
