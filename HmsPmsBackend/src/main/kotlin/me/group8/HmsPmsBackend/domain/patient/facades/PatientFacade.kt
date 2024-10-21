@@ -2,10 +2,7 @@ package me.group8.HmsPmsBackend.domain.patient.facades
 
 import me.group8.HmsPmsBackend.application.dtos.queries.InfectionDto
 import me.group8.HmsPmsBackend.application.dtos.queries.PatientCreateDto
-import me.group8.HmsPmsBackend.domain.patient.entities.AdmissionRecord
-import me.group8.HmsPmsBackend.domain.patient.entities.Infection
-import me.group8.HmsPmsBackend.domain.patient.entities.InfectionStatus
-import me.group8.HmsPmsBackend.domain.patient.entities.Patient
+import me.group8.HmsPmsBackend.domain.patient.entities.*
 
 interface PatientFacade {
     fun registerPatient(patientInfo: PatientCreateDto): Boolean
@@ -22,5 +19,7 @@ interface PatientFacade {
     fun addInfection(infectionInfo: InfectionDto): Boolean
     fun updateInfection(infectionId: String, infectionInfo: InfectionDto)
     fun getPatientInfectionStatus(patientId: String): InfectionStatus
+
+    fun getAllPatientLocations(patientId: String): Array<Location?>
 
 }
