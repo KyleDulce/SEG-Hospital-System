@@ -40,6 +40,7 @@ class RestApiController(
     private val dischargePatient: DischargePatient,
     private val registerPatient: RegisterPatient,
     private val infection: me.group8.HmsPmsBackend.application.usecases.Infection,
+    private val location: PatientLocation,
 ) {
 
     @PostMapping("/login")
@@ -240,6 +241,64 @@ class RestApiController(
                 TypeUtils.parseDate(request.endDate),
                 request.name
         ), employeeId);
+
+        if(result) {
+            return ResponseEntity.ok().build()
+        } else {
+            return ResponseEntity.badRequest().build()
+        }
+    }
+
+    @PostMapping("/location")
+    fun addLocation(@RequestBody request: LocationRequest): ResponseEntity<String> {
+        val userDetails = SecurityContextHolder.getContext().authentication.principal as Jwt
+        val employeeId = userDetails.subject
+
+        val result = location.addLocation(AddressCreateDto(
+                request.streetNum,
+                request.streetName,
+                request.aptNumber,
+                request.postalCode,
+                request.city,
+                request.province,
+                request.country
+        ), employeeId);
+
+        if(result != null) {
+            return ResponseEntity.ok(result)
+        } else {
+            return ResponseEntity.badRequest().build()
+        }
+    }
+
+    @PutMapping("/location/{locationId}")
+    fun updateLocation(@PathVariable("locationId") locationId: String, @RequestBody request: LocationRequest): ResponseEntity<String> {
+        val userDetails = SecurityContextHolder.getContext().authentication.principal as Jwt
+        val employeeId = userDetails.subject
+
+        val result = location.updateLocation(locationId, AddressCreateDto(
+                request.streetNum,
+                request.streetName,
+                request.aptNumber,
+                request.postalCode,
+                request.city,
+                request.province,
+                request.country
+        ), employeeId);
+
+        if(result) {
+            return ResponseEntity.ok().build()
+        } else {
+            return ResponseEntity.badRequest().build()
+        }
+    }
+
+    @PostMapping("/location/{locationId}/{patientId}")
+    fun updateLocation(@PathVariable("locationId") locationId: String, @PathVariable("patientId") patientId: String): ResponseEntity<String> {
+        val userDetails = SecurityContextHolder.getContext().authentication.principal as Jwt
+        val employeeId = userDetails.subject
+
+        val result = location.addLocationTracking(locationId, patientId, employeeId);
 
         if(result) {
             return ResponseEntity.ok().build()
