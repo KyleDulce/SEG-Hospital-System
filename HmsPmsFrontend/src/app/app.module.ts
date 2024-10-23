@@ -15,10 +15,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatSlideToggleModule, _MatSlideToggleRequiredValidatorModule,} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,6 +52,7 @@ import { RequestListComponent } from './request-list/request-list/request-list.c
 import { EditPatientInfoComponent } from './consult-patient-file/patient-file/edit-patient-info/edit-patient-info.component';
 import { DischargeDialogComponent } from './discharge/discharge-dialog/discharge-dialog.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { ModifyLocationHistoryDialogComponent } from './consult-patient-file/modify-location-history-dialog/modify-location-history-dialog.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +77,8 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
     EditPatientInfoComponent,
     DischargeDialogComponent,
     LoginComponent,
-    RegisterPatientComponent
+    RegisterPatientComponent,
+    ModifyLocationHistoryDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +105,9 @@ import { RegisterPatientComponent } from './register-patient/register-patient.co
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
