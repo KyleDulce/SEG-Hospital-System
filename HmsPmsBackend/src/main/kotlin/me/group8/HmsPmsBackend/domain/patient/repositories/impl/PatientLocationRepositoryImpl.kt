@@ -70,7 +70,17 @@ class PatientLocationRepositoryImpl (
         val locationIds = locationTrackingRepository.findByLocationTrackingId_PatientId(patientId)
 
         return locationIds.map { locationId ->
-            this.find(locationId.locationTrackingId.location_id)
+            this.find(locationId.locationTrackingId.locationId)
+        }.toTypedArray()
+    }
+
+    override fun findPatientIdsByLocationId(locationId: String?): Array<String> {
+        if (locationId == null)
+            return arrayOf()
+        val locationIds = locationTrackingRepository.findByLocationTrackingId_LocationId(locationId)
+
+        return locationIds.map { locationId ->
+            locationId.locationTrackingId.patientId
         }.toTypedArray()
     }
 }

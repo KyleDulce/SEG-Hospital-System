@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface LocationTrackingTableRepository: JpaRepository<LocationTrackingEntity, LocationTrackingId> {
 
-
     fun findByLocationTrackingId_PatientId(patientId: String): List<LocationTrackingEntity>
+    fun findByLocationTrackingId_LocationId(locationId: String): List<LocationTrackingEntity>
 }
