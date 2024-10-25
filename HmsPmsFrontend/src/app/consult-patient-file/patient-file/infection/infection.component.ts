@@ -1,19 +1,23 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { PatientFile, DialogResult, DialogOpenOptions, Prescription } from '../../../shared/model/patient-file.model';
-import { PatientFileService } from '../../services/patient-file.service';
-import { StaffType } from 'src/app/shared/model/authentication.model';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { MatDialog } from '@angular/material/dialog';
-import { PrescribeDialogComponent } from 'src/app/prescribe/prescribe-dialog/prescribe-dialog.component';
+import {PatientFileService} from "../../services/patient-file.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticationService} from "../../../shared/services/authentication.service";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  Infection,
+  PatientFile,
+  DialogResult,
+  DialogOpenOptions,
+} from "../../../shared/model/patient-file.model";
+import {StaffType} from "../../../shared/model/authentication.model";
+import {ModifyInfectionDialogComponent} from "../../modify-infection-dialog/modify-infection-dialog.component";
 
 @Component({
-  selector: 'app-prescriptions',
-  templateUrl: './prescriptions.component.html',
-  styleUrls: ['./prescriptions.component.css']
+  selector: 'app-infection',
+  templateUrl: './infection.component.html',
+  styleUrls: ['./infection.component.css']
 })
-export class PrescriptionsComponent {
-
+export class InfectionComponent {
   constructor(
     private patientFileService: PatientFileService,
     private router: Router,
@@ -22,11 +26,11 @@ export class PrescriptionsComponent {
     private dialog: MatDialog,
   ) {}
 
-  prescriptions!: Prescription[];
+  infections!: Infection[];
   staffType?: StaffType;
   patientId: string | null = null;
 
-  displayedColumns = ["identifier", "name", "unitByDay", "adminByDay", "methodOfAdministration", "startDate", "endDate"];
+  displayedColumns = ["name", "status", "startDate", "endDate"];
 
   errorMessage!: String;
 
@@ -36,7 +40,7 @@ export class PrescriptionsComponent {
     if (this.patientId) {
       this.patientFileService.getPatientFile(this.patientId).subscribe({
         next: (patientFile: PatientFile) => {
-          this.prescriptions = patientFile.prescriptions;
+          this.infections = patientFile.infections;
         },
         error: (error) => {
           this.errorMessage = "Patient not found";
@@ -47,11 +51,11 @@ export class PrescriptionsComponent {
     this.staffType = this.authenticationService.getStaffType();
   }
 
-  prescribe(): void {
+  infect(): void {
     const dialogData: DialogOpenOptions = {
       patientId: this.patientId!
     };
-    this.dialog.open(PrescribeDialogComponent, {
+    this.dialog.open(ModifyInfectionDialogComponent, {
       data: dialogData,
       disableClose: true
     }).afterClosed().subscribe(result => {
