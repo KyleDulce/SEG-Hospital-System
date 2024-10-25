@@ -45,10 +45,19 @@ export interface Prescription {
     endDate: Date;
 }
 
+export interface Infection {
+  identifier: String;
+  patienId: String;
+  name: String;
+  startDate: Date;
+  endDate: Date;
+}
+
 export interface PatientFile {
     patientInfo: Patient;
     admissionRecords: Admission[];
     prescriptions: Prescription[];
+    infections: Infection[];
 }
 
 export interface RegisterPatientRequest {
@@ -64,7 +73,7 @@ export interface RegisterPatientRequest {
     nextOfKin: NextOfKin;
 }
 
-export interface PrescribeMedDialogOpenOptions {
+export interface DialogOpenOptions {
     patientId: string
 }
 
@@ -79,7 +88,7 @@ export interface PrescribeMedicationRequest{
     patientId: string
 }
 
-export enum PrescribeDialogResult {
+export enum DialogResult {
     CANCEL,
     RELOAD
 }

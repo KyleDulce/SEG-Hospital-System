@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PrescribeDialogResult, PrescribeMedDialogOpenOptions, PrescribeMedicationRequest } from 'src/app/shared/model/patient-file.model';
+import { DialogResult, DialogOpenOptions, PrescribeMedicationRequest } from 'src/app/shared/model/patient-file.model';
 import { PrescribeService } from '../prescribe.service';
 import { environment } from 'src/environments/environment';
 
@@ -23,13 +23,13 @@ export class PrescribeDialogComponent {
     end: new FormControl<Date | null>(null, [Validators.required]),
   })
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: PrescribeMedDialogOpenOptions,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogOpenOptions,
     private dialogRef: MatDialogRef<PrescribeDialogComponent>,
     private prescribeService: PrescribeService,
     private snackbar: MatSnackBar) {}
 
   public cancel(): void {
-    this.dialogRef.close(PrescribeDialogResult.CANCEL)
+    this.dialogRef.close(DialogResult.CANCEL)
   }
 
   public prescribe(): void {
@@ -54,7 +54,7 @@ export class PrescribeDialogComponent {
         this.snackbar.open("Prescription Added", undefined, {
           duration: environment.snackbarDurationSeconds * 1000
         });
-        this.dialogRef.close(PrescribeDialogResult.RELOAD);
+        this.dialogRef.close(DialogResult.RELOAD);
       },
       error: (error: any) => {
         let message:string;
@@ -63,11 +63,11 @@ export class PrescribeDialogComponent {
         } else {
           message = "unexpected error";
         }
-        
+
         this.snackbar.open(message, undefined, {
           duration: environment.snackbarDurationSeconds * 1000
         });
-        this.dialogRef.close(PrescribeDialogResult.CANCEL);
+        this.dialogRef.close(DialogResult.CANCEL);
       }
     })
   }

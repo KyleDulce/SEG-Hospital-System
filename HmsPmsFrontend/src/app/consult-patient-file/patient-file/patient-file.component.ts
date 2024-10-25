@@ -11,11 +11,6 @@ import { ModifyInfectionDialogComponent } from '../modify-infection-dialog/modif
 export class PatientFileComponent {
   constructor(private matDialog: MatDialog) {}
 
-  public tempDialogOpen_history() {
-    //FIXME: remove me
-    this.matDialog.open(ModifyLocationHistoryDialogComponent);
-  }
-
   public tempDialogOpen() {
     //FIXME: remove me
     this.matDialog.open(ModifyInfectionDialogComponent);
