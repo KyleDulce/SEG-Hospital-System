@@ -54,6 +54,7 @@ import { DischargeDialogComponent } from './discharge/discharge-dialog/discharge
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { ModifyLocationHistoryDialogComponent } from './consult-patient-file/modify-location-history-dialog/modify-location-history-dialog.component';
 import { ModifyInfectionDialogComponent } from './consult-patient-file/modify-infection-dialog/modify-infection-dialog.component';
+import { LocationHistoryComponent } from './consult-patient-file/patient-file/location-history/location-history.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { ModifyInfectionDialogComponent } from './consult-patient-file/modify-in
     RegisterPatientComponent,
     ModifyLocationHistoryDialogComponent,
     ModifyInfectionDialogComponent,
+    LocationHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -109,7 +111,7 @@ import { ModifyInfectionDialogComponent } from './consult-patient-file/modify-in
     MatOptionModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
-    NgxMatNativeDateModule,
+    NgxMatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent],
