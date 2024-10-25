@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ModifyLocationHistoryDialogComponent } from '../modify-location-history-dialog/modify-location-history-dialog.component';
 import { ModifyInfectionDialogComponent } from '../modify-infection-dialog/modify-infection-dialog.component';
 
 @Component({
@@ -9,6 +10,11 @@ import { ModifyInfectionDialogComponent } from '../modify-infection-dialog/modif
 })
 export class PatientFileComponent {
   constructor(private matDialog: MatDialog) {}
+
+  public tempDialogOpen_history() {
+    //FIXME: remove me
+    this.matDialog.open(ModifyLocationHistoryDialogComponent);
+  }
 
   public tempDialogOpen() {
     //FIXME: remove me

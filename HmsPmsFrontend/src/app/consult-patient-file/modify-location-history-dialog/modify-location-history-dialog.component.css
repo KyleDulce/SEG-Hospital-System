@@ -1,0 +1,44 @@
+.location-history-dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.location-history-dialog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.location-history-dialog-header-text {
+  margin: 0;
+}
+
+.location-history-dialog-body {
+  display: flex;
+  flex-direction: row;
+  gap: 0.62rem;
+}
+
+.location-history-dialog-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+}
+
+.location-history-dialog-actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+
+.location-history-ok-button {
+  background-color: #2255a2;
+  color: #ffffff;
+}
+
+.location-history-cancel-button {
+  background-color: #a1a1a1;
+  color: #ffffff;
+}

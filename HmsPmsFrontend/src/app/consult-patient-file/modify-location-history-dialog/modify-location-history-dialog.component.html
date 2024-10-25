@@ -1,0 +1,82 @@
+<form class="location-history-dialog-form" [formGroup]="formGroup">
+  <div class="location-history-dialog-header">
+    <div>
+      <h1 class="location-history-dialog-header-text">
+        Location History Record
+      </h1>
+    </div>
+    <div class="admit-patient-id">Patient ID: <strong></strong></div>
+  </div>
+  <div class="location-history-dialog-body">
+    <div class="location-history-dialog-col">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Street Number:</mat-label>
+        <input matInput formControlName="streetNum" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Apartment Number:</mat-label>
+        <input matInput formControlName="aptNum" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Street Name:</mat-label>
+        <input matInput formControlName="streetName" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>City:</mat-label>
+        <input matInput formControlName="city" />
+      </mat-form-field>
+    </div>
+    <div class="location-history-dialog-col">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Postal Code:</mat-label>
+        <input matInput formControlName="postalCode" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Province:</mat-label>
+        <input matInput formControlName="province" />
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Country:</mat-label>
+        <input matInput formControlName="country" />
+      </mat-form-field>
+    </div>
+    <div class="location-history-dialog-col">
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>Start Date - Time</mat-label>
+        <input
+          type="text"
+          matInput
+          [ngxMatDatetimePicker]="startPicker"
+          formControlName="startDate"
+        />
+        <ngx-mat-datepicker-toggle matIconSuffix [for]="startPicker">
+        </ngx-mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #startPicker> </ngx-mat-datetime-picker>
+      </mat-form-field>
+      <mat-form-field subscriptSizing="dynamic">
+        <mat-label>End Date - Time</mat-label>
+        <input
+          type="text"
+          matInput
+          [ngxMatDatetimePicker]="endPicker"
+          formControlName="endDate"
+        />
+        <ngx-mat-datepicker-toggle matIconSuffix [for]="endPicker">
+        </ngx-mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #endPicker> </ngx-mat-datetime-picker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="location-history-dialog-actions">
+    <button mat-flat-button class="location-history-ok-button" (click)="okay()">
+      Add
+    </button>
+    <button
+      mat-flat-button
+      class="location-history-cancel-button"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+  </div>
+</form>
