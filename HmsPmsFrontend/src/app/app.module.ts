@@ -82,7 +82,7 @@ import { LocationHistoryComponent } from './consult-patient-file/patient-file/lo
     RegisterPatientComponent,
     ModifyLocationHistoryDialogComponent,
     ModifyInfectionDialogComponent,
-    LocationHistoryComponent
+    LocationHistoryComponent 
   ],
   imports: [
     BrowserModule,
@@ -111,7 +111,7 @@ import { LocationHistoryComponent } from './consult-patient-file/patient-file/lo
     MatOptionModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
