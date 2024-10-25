@@ -1,0 +1,42 @@
+.infection-dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.infection-dialog-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.infection-dialog-header-text {
+  margin: 0;
+}
+
+.infection-dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.62rem;
+}
+
+.infection-dialog-actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+
+.infection-ok-button {
+  background-color: #2255a2;
+  color: #ffffff;
+}
+
+.infection-cancel-button {
+  background-color: #a1a1a1;
+  color: #ffffff;
+}
+
+mat-form-field {
+  width: 30rem;
+}
