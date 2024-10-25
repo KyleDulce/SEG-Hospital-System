@@ -53,6 +53,7 @@ import { EditPatientInfoComponent } from './consult-patient-file/patient-file/ed
 import { DischargeDialogComponent } from './discharge/discharge-dialog/discharge-dialog.component';
 import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { ModifyLocationHistoryDialogComponent } from './consult-patient-file/modify-location-history-dialog/modify-location-history-dialog.component';
+import { ModifyInfectionDialogComponent } from './consult-patient-file/modify-infection-dialog/modify-infection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ModifyLocationHistoryDialogComponent } from './consult-patient-file/mod
     LoginComponent,
     RegisterPatientComponent,
     ModifyLocationHistoryDialogComponent,
+    ModifyInfectionDialogComponent,
   ],
   imports: [
     BrowserModule,
