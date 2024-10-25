@@ -30,7 +30,7 @@ export class InfectionComponent {
   staffType?: StaffType;
   patientId: string | null = null;
 
-  displayedColumns = ["identifier", "name", "startDate", "endDate"];
+  displayedColumns = ["name", "status", "startDate", "endDate"];
 
   errorMessage!: String;
 

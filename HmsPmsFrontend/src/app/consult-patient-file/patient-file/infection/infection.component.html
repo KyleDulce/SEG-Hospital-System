@@ -6,11 +6,6 @@
     </span>
   </div>
   <table mat-table [dataSource]="infections" class="mat-elevation-z8">
-    <ng-container matColumnDef="identifier">
-      <th mat-header-cell *matHeaderCellDef>Inf ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.identifier }}</td>
-    </ng-container>
-
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
@@ -18,7 +13,7 @@
 
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td *matCellDef="let element">{{ element.endDate ? "Infected" : "Not Infected" }}</td>
+      <td *matCellDef="let element">{{ element.endDate ? "Not Infected" : "Infected" }}</td>
     </ng-container>
 
     <ng-container matColumnDef="startDate">
