@@ -36,3 +36,7 @@
   background-color: #a1a1a1;
   color: #ffffff;
 }
+
+mat-form-field {
+  width: 30rem;
+}
