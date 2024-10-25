@@ -1,0 +1,26 @@
+<div class="location-section">
+    <div class="location-title">
+      <span>Location History</span>
+    </div>
+  
+    <table mat-table class="mat-elevation-z8">
+      <ng-container matColumnDef="locationName">
+        <th mat-header-cell *matHeaderCellDef>Location Name</th>
+        <td mat-cell *matCellDef="'locationName'">LOCATION A</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef>Start Date</th>
+        <td mat-cell *matCellDef="'startDate'">YYYY-MM-DD</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef>End Date</th>
+        <td mat-cell *matCellDef="'endDate'">YYYY-MM-DD</td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['locationName', 'startDate', 'endDate']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['locationName', 'startDate', 'endDate']"></tr>
+    </table>
+  </div>
+  
