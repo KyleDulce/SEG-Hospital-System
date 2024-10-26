@@ -165,11 +165,13 @@ class PatientFacadeImpl(
         val locations = locationRepository.findAllByPatientId(patientId)
         val patientSameLoc = mutableSetOf<String>()
 
-        // get all the patients that were in the same location
+        // get all the patients that were in the same location at the same time
         for (loc in locations) {
-            val patients = locationRepository.findPatientIdsByLocationId(loc?.locationId)
-            for (p in patients) {
-                patientSameLoc.add(p)
+            val locationCompare = locationRepository.findLocationTracking(loc?.locationId, patientId) ?: break
+            val locationTracking = locationRepository.findLocationTrackingByLocationId(loc?.locationId)
+            for (lt in locationTracking) {
+                if (locationCompare.startDate.before(lt.endDate) && lt.startDate.before(locationCompare.endDate))
+                patientSameLoc.add(lt.patientId)
             }
         }
 
@@ -187,8 +189,8 @@ class PatientFacadeImpl(
         return locationRepository.findAllByPatientId(patientId)
     }
 
-    override fun addLocationTracking(locationId: String, patientId: String): Boolean {
-        locationRepository.saveLocationTracking(locationId, patientId)
+    override fun addLocationTracking(locationId: String, patientId: String, startDate: Date, endDate: Date): Boolean {
+        locationRepository.saveLocationTracking(locationId, patientId, startDate, endDate)
         return true
     }
 

@@ -1,15 +1,15 @@
 package me.group8.HmsPmsBackend.domain.patient.repositories.impl
 
-import jakarta.persistence.Column
 import me.group8.HmsPmsBackend.application.db.postgres.entities.LocationTrackingEntity
-import me.group8.HmsPmsBackend.application.db.postgres.entities.MedicationEntity
 import me.group8.HmsPmsBackend.application.db.postgres.entities.PatientLocationEntity
 import me.group8.HmsPmsBackend.application.db.postgres.entities.id.LocationTrackingId
 import me.group8.HmsPmsBackend.application.db.postgres.repository.LocationTrackingTableRepository
 import me.group8.HmsPmsBackend.application.db.postgres.repository.PatientLocationTableRepository
 import me.group8.HmsPmsBackend.domain.patient.entities.Location
+import me.group8.HmsPmsBackend.domain.patient.entities.LocationTracking
 import me.group8.HmsPmsBackend.domain.patient.repositories.PatientLocationRepository
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class PatientLocationRepositoryImpl (
@@ -30,12 +30,12 @@ class PatientLocationRepositoryImpl (
         return entityToLocation(locationOpt.get())
     }
 
-    override fun saveLocationTracking(locationId: String, patientId: String) {
+    override fun saveLocationTracking(locationId: String, patientId: String, startDate: Date, endDate: Date) {
         val locationTrackingId = LocationTrackingId(patientId, locationId)
 
         // check that entity does not exist before adding it
-        if ( locationTrackingRepository.findById(locationTrackingId).isEmpty) {
-            val locationTracking = LocationTrackingEntity(locationTrackingId)
+        if (locationTrackingRepository.findById(locationTrackingId).isEmpty) {
+            val locationTracking = LocationTrackingEntity(locationTrackingId, startDate, endDate)
             locationTrackingRepository.save(locationTracking)
         }
     }
@@ -83,4 +83,36 @@ class PatientLocationRepositoryImpl (
             locationId.locationTrackingId.patientId
         }.toTypedArray()
     }
+
+    override fun findLocationTrackingByLocationId(locationId: String?): Array<LocationTracking> {
+        if (locationId == null)
+            return arrayOf()
+        val locationTacking = locationTrackingRepository.findByLocationTrackingId_LocationId(locationId)
+
+        return locationTacking.map { location ->
+            entityToLocationTracking(location)
+        }.toTypedArray()
+    }
+
+    override fun findLocationTracking(locationId: String?, patientId: String?): LocationTracking? {
+        if (locationId == null || patientId == null)
+            return null
+        val locationTackingOpt = locationTrackingRepository.findById(LocationTrackingId(patientId, locationId))
+
+        if(locationTackingOpt.isEmpty) {
+            return null
+        }
+        return entityToLocationTracking(locationTackingOpt.get())
+    }
+
+    private fun entityToLocationTracking(entity: LocationTrackingEntity): LocationTracking {
+        return LocationTracking(
+                entity.locationTrackingId.locationId,
+                entity.locationTrackingId.patientId,
+                entity.startDate,
+                entity.endDate
+        )
+    }
+
+
 }

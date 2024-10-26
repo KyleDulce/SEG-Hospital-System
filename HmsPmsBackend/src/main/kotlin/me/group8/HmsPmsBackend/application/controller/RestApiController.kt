@@ -294,11 +294,13 @@ class RestApiController(
     }
 
     @PostMapping("/location/{locationId}/{patientId}")
-    fun updateLocation(@PathVariable("locationId") locationId: String, @PathVariable("patientId") patientId: String): ResponseEntity<String> {
+    fun updateLocation(@PathVariable("locationId") locationId: String, @PathVariable("patientId") patientId: String,
+                       @RequestBody request: LocationTrackingRequest): ResponseEntity<String> {
         val userDetails = SecurityContextHolder.getContext().authentication.principal as Jwt
         val employeeId = userDetails.subject
 
-        val result = location.addLocationTracking(locationId, patientId, employeeId);
+        val result = location.addLocationTracking(locationId, patientId, employeeId,
+                TypeUtils.parseDate(request.startDate), TypeUtils.parseDate(request.endDate));
 
         if(result) {
             return ResponseEntity.ok().build()
