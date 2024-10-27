@@ -7,16 +7,17 @@ import me.group8.HmsPmsBackend.application.usecases.PatientLocation
 import me.group8.HmsPmsBackend.domain.patient.facades.PatientFacade
 import me.group8.HmsPmsBackend.domain.staff.facade.StaffFacade
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class PatientLocationImpl(
         val patientFacade: PatientFacade,
         val staffFacade: StaffFacade
 ): PatientLocation {
-    override fun addLocationTracking(locationId: String, patientId: String, employeeId: String): Boolean {
+    override fun addLocationTracking(locationId: String, patientId: String, employeeId: String, startDate: Date, endDate: Date): Boolean {
         val hasPerm = staffFacade.doesHaveUpdatePermission(employeeId)
         if(hasPerm) {
-            patientFacade.addLocationTracking(locationId, patientId)
+            patientFacade.addLocationTracking(locationId, patientId, startDate, endDate)
             return true
         }
         return false

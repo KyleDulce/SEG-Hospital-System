@@ -164,6 +164,8 @@ CREATE TABLE IF NOT EXISTS patient_location (
 CREATE TABLE IF NOT EXISTS location_tracking (
    patient_id CHAR(36) NOT NULL,
    location_id CHAR(36) NOT NULL,
+   location_start_date DATE NOT NULL,
+   location_end_date DATE,
    CONSTRAINT pk_location_tracking PRIMARY KEY (patient_id, location_id)
 );
 
