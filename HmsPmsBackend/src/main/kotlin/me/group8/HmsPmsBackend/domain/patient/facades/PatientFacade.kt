@@ -23,6 +23,7 @@ interface PatientFacade {
     fun getPatientInfectionStatus(patientId: String): InfectionStatus
 
     fun getAllPatientLocations(patientId: String): Array<Location?>
+    fun getLocationTrackingFromLocationId(locationId: String): Array<LocationTracking>
     fun addLocationTracking(locationId: String, patientId: String, startDate: Date, endDate: Date): Boolean
     fun addLocation(locationInfo: AddressCreateDto): String
     fun updateLocation(locationId: String, locationInfo: AddressCreateDto)
