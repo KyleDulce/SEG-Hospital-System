@@ -83,7 +83,7 @@ import { InfectionComponent } from './consult-patient-file/patient-file/infectio
     RegisterPatientComponent,
     ModifyLocationHistoryDialogComponent,
     ModifyInfectionDialogComponent,
-    LocationHistoryComponent 
+    LocationHistoryComponent,
     InfectionComponent,
   ],
   imports: [

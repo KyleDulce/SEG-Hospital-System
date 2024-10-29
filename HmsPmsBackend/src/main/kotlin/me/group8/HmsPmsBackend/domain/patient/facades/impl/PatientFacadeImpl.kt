@@ -189,6 +189,10 @@ class PatientFacadeImpl(
         return locationRepository.findAllByPatientId(patientId)
     }
 
+    override fun getLocationTrackingFromLocationId(locationId: String): Array<LocationTracking> {
+        return locationRepository.findLocationTrackingByLocationId(locationId)
+    }
+
     override fun addLocationTracking(locationId: String, patientId: String, startDate: Date, endDate: Date): Boolean {
         locationRepository.saveLocationTracking(locationId, patientId, startDate, endDate)
         return true
