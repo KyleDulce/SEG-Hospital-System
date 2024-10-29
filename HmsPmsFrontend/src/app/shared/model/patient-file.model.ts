@@ -58,6 +58,8 @@ export interface PatientFile {
     admissionRecords: Admission[];
     prescriptions: Prescription[];
     infections: Infection[];
+    infectionStatus: PatientInfectionStatus;
+
 }
 
 export interface RegisterPatientRequest {
@@ -132,4 +134,10 @@ export interface DischargeDialogOpenData {
 export enum DischargeDialogResult {
     CANCEL,
     RELOAD
+}
+
+export enum PatientInfectionStatus {
+    NOT_INFECTED, 
+    MAY_BE_INFECTED, 
+    INFECTED
 }

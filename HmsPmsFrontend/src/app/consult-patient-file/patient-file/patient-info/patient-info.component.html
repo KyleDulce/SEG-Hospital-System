@@ -1,9 +1,13 @@
 <div *ngIf="patient" class="patient-info">
   <div class="patient-info-header">
     <p class="patient-info-title">Patient Information</p>
-    <button mat-raised-button color="primary" *ngIf="!editingPatient" (click)="editPatient()">Edit</button>
+    <div class="status-edit-container">
+      <p class="status-text">
+        <span class="patient-info-status">{{ infectionStatus }}</span>
+      </p>
+      <button mat-raised-button color="primary" *ngIf="!editingPatient" (click)="editPatient()">Edit</button>
+    </div>
   </div>
-
 
   <div *ngIf="!editingPatient">
     <p><span class="patient-info-label">Patient ID:</span> {{ patient.patientId }}</p>
