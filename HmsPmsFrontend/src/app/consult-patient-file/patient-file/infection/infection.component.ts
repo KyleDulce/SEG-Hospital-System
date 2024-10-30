@@ -7,7 +7,7 @@ import {
   Infection,
   PatientFile,
   DialogResult,
-  DialogOpenOptions,
+  InfectionDialogOpenOptions,
 } from "../../../shared/model/patient-file.model";
 import {StaffType} from "../../../shared/model/authentication.model";
 import {ModifyInfectionDialogComponent} from "../../modify-infection-dialog/modify-infection-dialog.component";
@@ -30,7 +30,7 @@ export class InfectionComponent {
   staffType?: StaffType;
   patientId: string | null = null;
 
-  displayedColumns = ["name", "status", "startDate", "endDate"];
+  displayedColumns = ["name", "startDate", "endDate"];
 
   errorMessage!: String;
 
@@ -52,8 +52,26 @@ export class InfectionComponent {
   }
 
   infect(): void {
-    const dialogData: DialogOpenOptions = {
+    const dialogData: InfectionDialogOpenOptions = {
       patientId: this.patientId!
+    };
+    this.dialog.open(ModifyInfectionDialogComponent, {
+      data: dialogData,
+      disableClose: true
+    }).afterClosed().subscribe(result => {
+      if(result === DialogResult.RELOAD) {
+        //reload page
+        this.router.navigate(['/'], {
+          skipLocationChange: true
+        }).then(() => this.router.navigate(['/patient-file/' +  this.patientId]));
+      }
+    })
+  }
+
+  infectEdit(infection: Infection): void {
+    const dialogData: InfectionDialogOpenOptions = {
+      patientId: this.patientId!,
+      infection: infection
     };
     this.dialog.open(ModifyInfectionDialogComponent, {
       data: dialogData,

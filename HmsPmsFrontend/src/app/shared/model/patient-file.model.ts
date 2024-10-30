@@ -44,7 +44,7 @@ export interface Prescription {
 }
 
 export interface Infection {
-  identifier: String;
+  identifier: string;
   patienId: String;
   name: String;
   startDate: Date;
@@ -57,7 +57,7 @@ export interface PatientFile {
     prescriptions: Prescription[];
     infections: Infection[];
     infectionStatus: PatientInfectionStatus;
-
+    locations: LocationResponse[];
 }
 
 export interface LocationResponse {
@@ -152,7 +152,19 @@ export enum DischargeDialogResult {
 }
 
 export enum PatientInfectionStatus {
-    NOT_INFECTED, 
-    MAY_BE_INFECTED, 
+    NOT_INFECTED,
+    MAY_BE_INFECTED,
     INFECTED
+}
+
+export interface InfectionRequest {
+  name: string;
+  startDate: string;
+  endDate: string;
+  patientId: string;
+}
+
+export interface InfectionDialogOpenOptions {
+  patientId: string;
+  infection?: Infection;
 }
