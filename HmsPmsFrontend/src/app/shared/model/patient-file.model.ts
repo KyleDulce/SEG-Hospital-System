@@ -52,11 +52,12 @@ export interface Infection {
 }
 
 export interface PatientFile {
-  patientInfo: Patient;
-  admissionRecords: Admission[];
-  prescriptions: Prescription[];
-  infections: Infection[];
-  locations: LocationResponse[];
+    patientInfo: Patient;
+    admissionRecords: Admission[];
+    prescriptions: Prescription[];
+    infections: Infection[];
+    infectionStatus: PatientInfectionStatus;
+
 }
 
 export interface LocationResponse {
@@ -74,6 +75,7 @@ export interface PatientLocation {
   city: string;
   province: string;
   country: string;
+
 }
 
 export interface RegisterPatientRequest {
@@ -147,4 +149,10 @@ export interface DischargeDialogOpenData {
 export enum DischargeDialogResult {
   CANCEL,
   RELOAD,
+}
+
+export enum PatientInfectionStatus {
+    NOT_INFECTED, 
+    MAY_BE_INFECTED, 
+    INFECTED
 }

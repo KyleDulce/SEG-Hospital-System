@@ -4,6 +4,7 @@ import {
   NextOfKin,
   PatientFile,
   Patient,
+  PatientInfectionStatus,
 } from '../../../shared/model/patient-file.model';
 import { PatientFileService } from '../../services/patient-file.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +25,7 @@ export class PatientInfoComponent implements OnInit {
   address!: Address;
   nextOfKin!: NextOfKin;
   editingPatient = false;
+  infectionStatus!: String;
 
   errorMessage!: String;
 
@@ -36,6 +38,7 @@ export class PatientInfoComponent implements OnInit {
           this.patient = patientFile.patientInfo;
           this.address = this.patient.address;
           this.nextOfKin = this.patient.nextOfKin;
+          this.infectionStatus = patientFile.infectionStatus.toString().replace(/_/g, ' ');;
         },
         error: (error) => {
           this.errorMessage = "Patient not found";
