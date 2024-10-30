@@ -154,7 +154,7 @@ class RestApiController(
         var prescriptions: Array<Medication> = consultPatientFile.getAllPatientPrescriptions(patientId)
         var infections: Array<Infection> = consultPatientFile.getAllPatientInfections(patientId)
         var infectionStatus: InfectionStatus = consultPatientFile.getPatientInfectionStatus(patientId)
-        var locations: Array<Location?> = consultPatientFile.getAllPatientLocations(patientId)
+        var locations: Array<LocationResponse?> = consultPatientFile.getAllPatientLocations(patientId)
 
         if (patientInfo == null){
             return ResponseEntity.notFound().build()

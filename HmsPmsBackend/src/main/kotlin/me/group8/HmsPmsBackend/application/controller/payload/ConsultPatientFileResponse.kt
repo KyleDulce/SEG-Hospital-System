@@ -9,5 +9,5 @@ data class ConsultPatientFileResponse(
     val prescriptions: Array<Medication>,
     val infections: Array<Infection>,
     val infectionStatus: InfectionStatus,
-    val locations: Array<Location?>
+    val locations: Array<LocationResponse?>
 )

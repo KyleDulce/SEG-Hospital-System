@@ -33,11 +33,8 @@ class PatientLocationRepositoryImpl (
     override fun saveLocationTracking(locationId: String, patientId: String, startDate: Date, endDate: Date) {
         val locationTrackingId = LocationTrackingId(patientId, locationId)
 
-        // check that entity does not exist before adding it
-        if (locationTrackingRepository.findById(locationTrackingId).isEmpty) {
-            val locationTracking = LocationTrackingEntity(locationTrackingId, startDate, endDate)
-            locationTrackingRepository.save(locationTracking)
-        }
+        val locationTracking = LocationTrackingEntity(locationTrackingId, startDate, endDate)
+        locationTrackingRepository.save(locationTracking)
     }
 
     private fun locationToEntity(location: Location): PatientLocationEntity {
